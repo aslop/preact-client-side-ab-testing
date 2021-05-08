@@ -1,20 +1,23 @@
 import { h, render } from 'preact';
 
-// Imports
+// Component imports
 import Mycomp from './components/MyComp';
 
 // Project settings
-const target = document.querySelector('.Module1');
-target!.innerHTML = '';
+import { waitForElement } from './lib/waitForElement';
 
-function MainComponent() {
-  return (
-    <div>
-      <Mycomp />
-    </div>
-  );
-}
+const targetCssSelector = '.Module1';
 
-const App = <MainComponent />;
-
-render(App, target!);
+waitForElement(targetCssSelector, (cssSelector) => {
+  const target = document.querySelector(cssSelector);
+  target!.innerHTML = '';
+  function MainComponent() {
+    return (
+      <div>
+        <Mycomp />
+      </div>
+    );
+  }
+  const App = <MainComponent />;
+  render(App, target!);
+});
