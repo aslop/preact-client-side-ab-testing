@@ -11,13 +11,14 @@ const targetCssSelector = '.Module1';
 waitForElement(targetCssSelector, (cssSelector) => {
   const target = document.querySelector(cssSelector);
   target!.innerHTML = '';
-  function MainComponent() {
+
+  function App() {
     return (
       <div>
         <Mycomp />
       </div>
     );
   }
-  const App = <MainComponent />;
-  render(App, target!);
+
+  render(<App />, target!);
 });
