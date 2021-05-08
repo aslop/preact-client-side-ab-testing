@@ -3,8 +3,8 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import { uglify } from 'rollup-plugin-uglify';
 import html from 'rollup-plugin-html';
-import css from 'rollup-plugin-import-css';
 import typescript from 'rollup-plugin-typescript2';
+import styles from 'rollup-plugin-styles';
 
 export default {
   input: 'src/index.tsx',
@@ -17,10 +17,7 @@ export default {
     html({
       include: '**/*.html',
     }),
-    css({
-      include: '**/*.css',
-      minify: true,
-    }),
+    styles(),
     resolve(),
     babel({
       exclude: 'node_modules/**',

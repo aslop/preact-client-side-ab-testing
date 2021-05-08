@@ -2,7 +2,7 @@ import { h, render } from 'preact';
 
 // Component imports
 import Mycomp from './components/MyComp';
-
+import './styles/main.css';
 // Project settings
 import { waitForElement } from './lib/waitForElement';
 
