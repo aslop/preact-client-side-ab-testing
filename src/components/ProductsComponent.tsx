@@ -4,6 +4,24 @@ import { AppContext } from '../store/context';
 const Mycomp = () => {
   const { state, dispatch } = useContext(AppContext);
 
+  const handleDelete = (id) => {
+    dispatch({
+      type: 'DELETE_PRODUCT',
+      payload: { id },
+    });
+  };
+
+  const handleAdd = () => {
+    dispatch({
+      type: 'CREATE_PRODUCT',
+      payload: {
+        id: Math.round(Math.random() * 10000),
+        name: `Product-${Math.round(Math.random() * 10000)}`,
+        price: Math.round(Math.random() * 10000),
+      },
+    });
+  };
+
   return (
     <div>
       <button
@@ -13,16 +31,7 @@ const Mycomp = () => {
           padding: '0.5rem 1.5rem',
           borderRadius: '4px',
         }}
-        onClick={() => {
-          dispatch({
-            type: 'CREATE_PRODUCT',
-            payload: {
-              id: Math.round(Math.random() * 10000),
-              name: `Product-${Math.round(Math.random() * 10000)}`,
-              price: Math.round(Math.random() * 10000),
-            },
-          });
-        }}
+        onClick={handleAdd}
       >
         Add Product
       </button>
@@ -41,6 +50,19 @@ const Mycomp = () => {
                   >
                     <div>{name}</div>
                     <div>{price}</div>
+
+                    <button
+                      style={{
+                        background: 'red',
+                        color: 'white',
+                        padding: '0.5rem 1.5rem',
+                      }}
+                      onClick={() => {
+                        handleDelete(id);
+                      }}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               );
