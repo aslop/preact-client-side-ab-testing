@@ -27,7 +27,26 @@ const Mycomp = () => {
         Add Product
       </button>
 
-      <div>{JSON.stringify(state)}</div>
+      <div>
+        {state.products
+          ? state.products.map(({ id, name, price }) => {
+              return (
+                <div style={{ padding: '1rem' }} key={id}>
+                  <div
+                    style={{
+                      border: '1px solid green',
+                      borderRadius: '4px',
+                      padding: '1rem',
+                    }}
+                  >
+                    <div>{name}</div>
+                    <div>{price}</div>
+                  </div>
+                </div>
+              );
+            })
+          : null}
+      </div>
     </div>
   );
 };
