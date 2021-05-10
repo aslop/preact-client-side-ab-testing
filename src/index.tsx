@@ -1,10 +1,8 @@
 import { h, render } from 'preact';
-
-// Component imports
-import Mycomp from './components/MyComp';
+import ProductsComponent from './components/ProductsComponent';
 import './styles/main.css';
-// Project settings
 import { waitForElement } from './lib/waitForElement';
+import { AppProvider } from './store/context';
 
 const targetCssSelector = '.Module1';
 
@@ -14,9 +12,9 @@ waitForElement(targetCssSelector, (cssSelector) => {
 
   function App() {
     return (
-      <div>
-        <Mycomp />
-      </div>
+      <AppProvider>
+        <ProductsComponent />
+      </AppProvider>
     );
   }
 

@@ -1,3 +1,4 @@
+// TODO Must type cb type
 export const waitForElement = (cssSelector: string, cb: any) => {
   const reqAnId = window.requestAnimationFrame(lookForElement);
 
